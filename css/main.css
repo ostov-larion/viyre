@@ -1,0 +1,151 @@
+* {
+    outline: none;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #333;
+    color: #eee;
+    overflow: hidden;
+}
+
+#board {
+    display: flex;
+    flex-direction: row;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    visibility: hidden;
+    opacity: 0;
+    transition: 2s all;
+}
+
+.card {
+    display: inline-block;
+    flex-direction: column;
+    text-align: center;
+    padding: 5%;
+    margin: 5px;
+    height: 150px;
+    width: 160px;
+    border-radius: 4px;
+    background-color: #eee;
+    color: #333;
+    cursor: pointer;
+    user-select: none;
+    transition: 500ms all;
+}
+
+.card:hover:not(.inverted) {
+    position: relative;
+    top: -5px;
+}
+
+.card.inverted {
+    background-color: #555;
+    color: #555;
+    cursor: not-allowed;
+}
+.card.inverted[data-disabled = true] {
+    background-color: #555;
+    color: #555;
+}
+
+.card[data-disabled = true] {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.card[data-disabled = true]:active {
+    pointer-events: none;
+}
+.card > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100px;
+}
+
+.card > div > img {
+    pointer-events: none;
+}
+
+.card[data-provoc = true]::after {
+    content: "⌘";
+    align-self: flex-end;
+}
+
+.card[data-provoc = true].inverted > div {
+    border: none;
+}
+
+#compass {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 2%;
+    visibility: hidden;
+    opacity: 0;
+    transition: 2s all;
+}
+
+#notes {
+    visibility: hidden;
+    opacity: 0;
+    transition: 2s all;
+}
+
+button {
+    border: none;
+    border-radius: 4px;
+    padding: 4%;
+    background-color: #eee;
+    margin: 5px;
+    color: #333;
+    transition: 500ms all;
+    cursor: pointer;
+}
+
+button:hover {
+    color: #eee;
+    background-color: #555;
+}
+
+button:disabled {
+    background-color: #555;
+    color: #eee;
+    cursor: not-allowed;
+}
+
+button.big {
+    padding: 40%;
+}
+
+#menu {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 5%;
+}
+
+#stats {
+    opacity: 0;
+    visibility: hidden;
+    border-radius: 4px;
+    background-color: #555;
+    color: #eee;
+    margin-top: 2%;
+    padding: 5px;
+    transition: 2s all;
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
